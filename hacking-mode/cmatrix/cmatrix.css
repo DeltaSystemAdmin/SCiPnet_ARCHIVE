@@ -1,0 +1,25 @@
+#satelliteCmatrixModule {
+  width: 525px;
+  display: block;
+}
+
+#gridCmatrixModule {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+#mapContainerCmatrixModule {
+  mask-image: radial-gradient(circle, var(--background) 60%, rgba(0, 0, 0, 0) 100%);
+  -webkit-mask-image: radial-gradient(circle, var(--background) 60%, rgba(0, 0, 0, 0) 100%);
+}
+
+#detailsCmatrixModule {
+  position: absolute;
+  margin-left: 15px;
+  font-size: 10px;
+}
+
+#countryCmatrixModule {
+  margin-top: 5px;
+}

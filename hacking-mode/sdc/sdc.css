@@ -1,0 +1,791 @@
+/* general properties */
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=block');
+
+:root {
+  --stroke-10: rgba(var(--strokeRgb), 0.1);
+  --stroke-20: rgba(var(--strokeRgb), 0.2);
+  --stroke-30: rgba(var(--strokeRgb), 0.3);
+  --stroke-40: rgba(var(--strokeRgb), 0.4);
+  --stroke-50: rgba(var(--strokeRgb), 0.5);
+  --stroke-60: rgba(var(--strokeRgb), 0.6);
+  --stroke-70: rgba(var(--strokeRgb), 0.7);
+  --stroke-80: rgba(var(--strokeRgb), 0.8);
+  --stroke-90: rgba(var(--strokeRgb), 0.9);
+}
+
+red {
+  color: var(--red)
+}
+
+green {
+  color: var(--green)
+}
+
+grey, .textGrey {
+  color: var(--textDim)
+}
+
+mono, code, tt {
+  font-family: 'Ubuntu Mono', monospace;
+}
+
+theme {
+  color: var(--main);
+}
+
+.warningBanner {
+  background-size: 200% 200%;
+  height: 10px;
+  margin: 10px 0;
+}
+
+.warningBanner.normal {
+  background-image:
+    repeating-linear-gradient(-45deg,
+      transparent,
+      transparent 0.5rem,
+      var(--main) 0.5rem,
+      var(--main) 1rem);
+}
+
+.warningBanner.red {
+  background-image:
+    repeating-linear-gradient(-45deg,
+      transparent,
+      transparent 0.5rem,
+      var(--red) 0.5rem,
+      var(--red) 1rem);
+}
+
+.grid {
+  background-size: 20px 20px;
+  background-image: linear-gradient(to right, var(--stroke-10) 1px, transparent 1px), linear-gradient(to bottom, var(--stroke-10) 1px, transparent 1px);
+  border-radius: 5px;
+}
+
+.crt::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  background-size: 100% 2px, 3px 100%;
+}
+
+h1, h3, h4, h5, h6 {
+  color: var(--contrast);
+  background: var(--main);
+  font-weight: normal;
+  padding: 4px 14px;
+  border-radius: 6px;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+h4 span, h5 span, h6 span {
+  line-height: 2;
+}
+
+h3 {
+  width: -moz-fit-content;
+  width: -webkit-fit-content;
+  margin: 10px auto;
+}
+
+h1 {
+  padding: 14px 18px
+}
+
+h4, h5, h6 {
+  width: -moz-fit-content;
+  width: -webkit-fit-content;
+  margin: auto;
+  background: none;
+  color: var(--text);
+}
+
+/* flash entrance */
+#satelliteContain, #windowTerminal, #leftBottomOuterContain {
+  animation: entranceFlash 400ms 497ms linear backwards 1;
+  will-change: opacity;
+}
+
+.component:not(.noAnimation), #connectionSpeed, #liveText, #windowTab, #satelliteLive, .satelliteIndication, #satelliteGrid {
+  animation: entranceFlash 500ms 497ms linear backwards 1;
+  will-change: opacity;
+}
+
+#dashboardWindow, #clearanceList {
+  animation: entranceFlash 100ms 400ms linear backwards 1;
+  will-change: opacity;
+}
+
+#dashboardTitle, #introDataContain, #dashboardLogo {
+  animation: entranceFlash 600ms 697ms linear backwards 1;
+  will-change: opacity;
+}
+
+/* flexbox properties */
+.flexbox, .flex-center, .flex-column {
+  display: flex;
+}
+
+.flex-center {
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+/* svg properties */
+.component:not(.siteMap .component) path:not(.exclude) {
+  stroke: var(--stroke) !important;
+}
+
+.component path.color2:not(.fill) {
+  stroke: var(--stroke2) !important;
+}
+
+.component path.color2.fill {
+  fill: var(--stroke2) !important;
+}
+
+/* dashboard */
+#contentContain, #dashboardContain {
+  height: 100%;
+  width: 100%;
+}
+
+#windowContain {
+  flex: 1;
+  height: 100%;
+  margin: 1.04vw;
+  overflow: hidden;
+}
+
+#dataContain {
+  transform-origin: left;
+  width: 335.254px;
+}
+
+#leftBottomOuterContain {
+  transform: scale(0.92);
+  transform-origin: left bottom;
+}
+
+#leftBottomContain {
+  outline: 0;
+  box-shadow: 0 2px var(--stroke-50) inset, -2px 0 var(--stroke-50) inset;
+  padding: 15px 10px;
+}
+
+#leftBottomContain::before, #leftBottomContain>:first-child:before {
+  display: none;
+}
+
+#leftBottomContain::after {
+  border-width: 2px 2px 0 0;
+}
+
+#leftBottomContain>:first-child:after {
+  display: none;
+}
+
+#connectionSpeed {
+  padding: 10px 15px;
+  position: absolute;
+  margin-left: 251px;
+  border: 1px solid var(--stroke-50);
+  margin-top: 34px;
+  font-family: 'Ubuntu Mono'
+}
+
+#satelliteContain {
+  position: relative;
+}
+
+#satelliteLive {
+  height: 214px;
+  position: absolute;
+  border-radius: 5px;
+}
+
+#satelliteError {
+  position: absolute;
+  letter-spacing: 2px;
+  font-size: 20px;
+  font-family: 'Ubuntu Mono';
+  font-weight: bold;
+  border: 1px solid var(--red);
+  color: var(--red);
+  border-width: 1px 0;
+  text-shadow: -1px -1px 6px var(--red);
+  z-index: 3;
+  display: none;
+}
+
+#satelliteGrid {
+  width: 214px;
+  height: 214px;
+  position: absolute;
+  box-shadow: inset 0 0 8px 5px #ffffff26;
+}
+
+.satelliteIndication {
+  position: absolute;
+  border: 1px solid var(--stroke-50);
+  padding: 5px;
+  outline: 1px solid var(--stroke-70);
+  outline-offset: 4px;
+  display: none;
+}
+
+.satelliteIndication::before {
+  position: absolute;
+  font-size: 12px;
+  letter-spacing: 2px;
+  transform: scale(0.5);
+  margin-top: -25px;
+  margin-left: -74px;
+  width: 250px;
+}
+
+#siteIndication::before {
+  content: 'FOUNDATION SITE';
+}
+
+#deployIndication::before {
+  content: 'STRATEGIC DEPLOYMENT';
+}
+
+#satelliteErrorBackground {
+  position: absolute;
+  height: 71px;
+  width: 114px;
+  background: var(--red);
+  opacity: 0.1;
+  z-index: 2;
+  display: none;
+}
+
+#liveText {
+  margin: 0 0 7px 39px;
+  letter-spacing: 2px;
+  font-size: 10px;
+  text-transform: uppercase;
+  word-break: keep-all;
+  text-overflow: ellipsis;
+  width: 37ch;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+#clearanceListContain {
+  width: 90px;
+  height: 160px;
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: -31px;
+}
+
+#clearanceList {
+  position: absolute;
+  left: 19px;
+  top: 40px;
+}
+
+#clearanceList div {
+  padding: 4px;
+  border: 1px solid var(--stroke-50);
+  font-family: 'Ubuntu Mono', monospace;
+  margin-bottom: 4px;
+}
+
+#clearanceList div:last-child {
+  margin-bottom: 10px;
+}
+
+#profileDataContain {
+  border: 2px solid var(--stroke-20);
+  height: 143.3px;
+  width: 110px;
+  margin-right: -7px;
+  margin-left: 4px;
+}
+
+#loginStatus {
+  line-height: 14px;
+  letter-spacing: 0.09em;
+  font-weight: bold;
+  font-size: 10px;
+}
+
+#loginName {
+  letter-spacing: 0.09em;
+  font-size: 15px;
+  margin: 5px 0;
+  word-break: keep-all;
+  text-overflow: ellipsis;
+  width: 9ch;
+  overflow: hidden;
+  white-space: nowrap;
+  text-align: center;
+}
+
+#loginTitle {
+  color: var(--textDim);
+  letter-spacing: 0.035em;
+  font-size: 10px;
+  text-align: center;
+  word-break: break-all;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  width: 17ch;
+}
+
+#loginClearance {
+  position: absolute;
+  font-weight: 500;
+  font-size: 20px;
+  color: var(--main);
+}
+
+#clearanceBadge path {
+  stroke: var(--main)
+}
+
+.powerBar {
+  height: 128px;
+  width: 26px;
+  border: 1px solid var(--stroke-70);
+  position: relative;
+  background-image:
+    repeating-linear-gradient(-45deg,
+      var(--stroke-10),
+      var(--stroke-10) 0.5rem,
+      var(--stroke-30) 0.5rem,
+      var(--stroke-30) 1rem);
+  background-size: 200% 200%;
+}
+
+.powerBar .powerBarInner {
+  width: 100%;
+  overflow: hidden;
+  position: absolute;
+  border: 2px solid var(--stroke-50);
+  border-width: 2px 0 0 0;
+  background-color: rgba(var(--mainRgb), 0.6);
+  bottom: 0;
+  height: 44%;
+  transition: 1s ease;
+}
+
+#leftBottomInnerconnection {
+  position: absolute;
+  margin-top: -32px;
+  margin-left: -20px;
+}
+
+#leftBottomInnerconnection svg {
+  top: 203.5px;
+  left: 123px;
+  position: absolute;
+}
+
+#geoContain {
+  height: 173px;
+  width: 142px;
+  border: 2px solid var(--stroke-20);
+  margin-left: 5px;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+#geoInnerContain {
+  padding-left: 7px;
+  border: 1px solid var(--stroke-60);
+  border-width: 0 0 0 1px;
+  margin-left: 7px;
+  margin-top: 7px;
+}
+
+#geoRegion, #geoIsp, #geoType, #geoIp {
+  word-break: break-all;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+#geoIsp, #geoType, #geoIp {
+  -webkit-line-clamp: 1;
+  color: var(--text);
+}
+
+#dashboardTitle {
+  padding: 4px 14px;
+  letter-spacing: 0.09em;
+  text-transform: none;
+  color: rgba(var(--contrastRgb), 0.74);
+  margin: 0;
+}
+
+#dashboardLogo {
+  height: 40px;
+  width: 40px;
+  margin: 0 20px;
+  opacity: 0.7;
+}
+
+#sidebarSiteMap {
+  position: absolute;
+  margin-top: 113px;
+  margin-left: 70px;
+  transform: scale(0.95);
+}
+
+#introSiteMap svg {
+  max-width: 22.8vw;
+  filter: blur(0.25px)
+}
+
+#introSiteMap {
+  width: 22.8vw;
+  height: 19.8vw;
+  position: relative;
+  margin-top: max(3px, 1.78vw);
+}
+
+#introSiteMap g path {
+  stroke-width: 0.4;
+}
+
+#siteMap1Intro {
+  transform: rotateX(57deg) rotateY(0deg) rotateZ(331deg) translate3d(0.21vw, 1.46vw, 1.1111vw);
+  filter: blur(0.55px) !important;
+}
+
+#siteMap2Intro {
+  transform: rotateX(57deg) rotateY(0deg) rotateZ(331deg) translate3d(0.625vw, 1.875vw, 4.236vw);
+  animation: mapTranslate2 500ms ease;
+}
+
+#siteMap3Intro {
+  transform: rotateX(57deg) rotateY(0deg) rotateZ(331deg) translate3d(0.139vw, 1.875vw, 7.361vw);
+  animation: mapTranslate3 1s ease;
+}
+
+@keyframes mapTranslate2 {
+  from {
+    transform: rotateX(57deg) rotateY(0deg) rotateZ(331deg) translate3d(0.625vw, 1.875vw, 1.1111vw);
+  }
+
+  to {
+    transform: rotateX(57deg) rotateY(0deg) rotateZ(331deg) translate3d(0.625vw, 1.875vw, 4.236vw);
+  }
+}
+
+@keyframes mapTranslate3 {
+  from {
+    transform: rotateX(57deg) rotateY(0deg) rotateZ(331deg) translate3d(0.625vw, 1.875vw, 1.1111vw);
+  }
+
+  to {
+    transform: rotateX(57deg) rotateY(0deg) rotateZ(331deg) translate3d(0.139vw, 1.875vw, 7.361vw);
+  }
+}
+
+.siteMap svg, .siteMap img {
+  position: absolute;
+}
+
+#siteStatus, #siteIntegrity {
+  font-size: 12px;
+}
+
+#siteStatus {
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+
+#siteIntegrity {
+  letter-spacing: 2px;
+  opacity: 0.74;
+}
+
+#windowTab {
+  justify-content: flex-start;
+  overflow: auto;
+  min-height: 50px;
+  border: 1px solid var(--stroke-50);
+  border-width: 0 0 1px 0;
+  width: 90%;
+  margin: auto;
+  height: 6.33vh;
+  margin-bottom: 0.633vh;
+  mask-image: linear-gradient(to right, transparent, var(--background) 2%, var(--background) 98%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent, var(--background) 2%, var(--background) 98%, transparent 100%);
+}
+
+span.windowTabOption {
+  padding: 10px 30px;
+  border: 1px solid var(--stroke-50);
+  letter-spacing: 2px;
+  margin: 0 15px;
+  cursor: pointer;
+  transition: 200ms ease;
+}
+
+span.windowTabOption[data-status="off"] {
+  color: var(--stroke-50)
+}
+
+span.windowTabOption:hover {
+  opacity: 0.7
+}
+
+#windowTerminal {
+  height: 100%;
+  padding: 5px;
+  margin: 15px 0;
+  display: flex;
+  align-items: center;
+  margin-top: 1px;
+  overflow: hidden;
+}
+
+#windowTerminalContent {
+  background: rgba(var(--strokeRgb), 0.04);
+  background: linear-gradient(180deg, rgba(var(--strokeRgb), 0.04387) 0%, rgba(var(--mainRgb), 0.08869) 100%);
+  height: 100%;
+  flex: 1;
+  overflow: auto;
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: rgba(var(--textRgb), 0.2);
+  border-radius: 7px;
+}
+
+*::-webkit-scrollbar-track, *::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+#windowTerminalLine {
+  height: 90%;
+  position: absolute;
+  width: 1px;
+  background: var(--stroke-50);
+  margin-left: -17px;
+}
+
+/* terminal */
+#scipnetLogo {
+  margin: 1.04vw 3.47vw;
+  margin-top: 0px;
+}
+
+#scipnetLogo svg {
+  width: 100%;
+  height: 100%;
+  animation: scipnetEntrance 2000ms ease;
+  max-width: min(6.944vw, 97px);
+  max-height: min(6.944vw, 97px);
+}
+
+@keyframes scipnetEntrance {
+  from {
+    transform: scale(0) rotate(360deg)
+  }
+
+  to {
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+#scipnetLogo div {
+  font-size: 1.389vw;
+  max-width: 14.1vw;
+  width: -moz-fit-content;
+  width: -webkit-fit-content;
+  letter-spacing: 2px;
+  margin-left: 1.04vw;
+  font-weight: bold;
+  animation: scipnetTextEntrance 2000ms ease;
+}
+
+@keyframes scipnetTextEntrance {
+  from {
+    opacity: 0;
+    transform: translate(-7.36vw, 0px);
+  }
+
+  to {
+    opacity: 100%;
+    transform: translate(0px, 0px);
+  }
+}
+
+#scipnetLogoHr {
+  animation: scipnetHrEntrance 2000ms ease;
+  will-change: width;
+  width: calc(100% - 6.94vw);
+  margin-bottom: 0;
+}
+
+@keyframes scipnetHrEntrance {
+  from {
+    opacity: 0;
+    width: 0%;
+  }
+
+  to {
+    opacity: 100%;
+    width: calc(100% - 6.94vw);
+  }
+}
+
+#startingIntro {
+  display: none;
+  width: -moz-fit-content;
+  width: -webkit-fit-content;
+  letter-spacing: 2px;
+  margin: auto;
+  text-transform: uppercase;
+  margin: 2.47vw 1.041vw;
+  line-height: 2;
+}
+
+#dailyReport {
+  border: 1px solid rgba(var(--textRgb), 0.4);
+  width: calc(100% - 3.47vw);
+  border-radius: 0.625vw;
+  overflow: auto;
+  padding: clamp(15px, 2.78vw, 50px);
+  box-sizing: border-box;
+  margin-top: 3.8vh;
+  -webkit-transition: height .7s ease;
+  transition: height .7s ease;
+}
+
+#introData {
+  text-align: end;
+  margin-right: 2.78vw;
+  letter-spacing: 1px;
+}
+
+#introTime {
+  font-size: clamp(20px, 2.083vw, 50px);
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 1.0416vw
+}
+
+#introDataContain .cornerBorder {
+  outline: none;
+  font-family: 'Ubuntu Mono', monospace;
+}
+
+#introDataContain {
+  margin-left: 15px;
+  margin-bottom: 15px;
+}
+
+#terminalEnterBtn {
+  font-size: max(15px, 1.5vw);
+  letter-spacing: 3px;
+  font-family: 'Ubuntu Mono', monospace;
+  cursor: pointer;
+  text-align: center;
+  width: -moz-fit-content;
+  width: -webkit-fit-content;
+  margin: auto;
+}
+
+#terminalEnterBtn:hover {
+  background: var(--highlightBackground);
+  color: var(--highlightText);
+}
+
+#leftBottomLine {
+  height: 345px;
+  width: 1px;
+  background: var(--stroke);
+}
+
+#leftBottomLineContain {
+  opacity: 0.6;
+  left: 334px;
+  position: absolute;
+}
+
+commandBlockquote {
+  margin: 5px 30px;
+  display: block;
+}
+
+#terminalInput {
+  display: inline;
+  outline: none;
+  visibility: visible;
+  caret-color: transparent;
+  white-space: -moz-pre-space;
+}
+
+#terminalInput::selection {
+  color: var(--highlightText);
+  background: var(--highlightBackground);
+}
+
+#terminalInput:empty::before {
+  content: ' ';
+}
+
+@keyframes blink {
+  to {
+    visibility: hidden;
+  }
+}
+
+#terminalInput:focus+#terminalCaret {
+  animation: blink 1s steps(5, start) infinite;
+}
+
+#terminalInput.noCaret+#terminalCaret {
+  visibility: hidden;
+}
+
+#terminalCaret {
+  border: 0;
+  padding: 0;
+  outline: none;
+  background-color: var(--text);
+  display: inline-block;
+  font-family: monospace;
+  width: 8px;
+}
+
+#terminalContainer {
+  line-height: 2;
+  padding: max(1.389vw, 20px);
+  box-sizing: border-box;
+  letter-spacing: 1px;
+  word-break: break-all;
+}
+
+#terminalContainer hr {
+  opacity: 0.5;
+}
